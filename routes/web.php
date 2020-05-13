@@ -25,6 +25,7 @@ Route::get('/contact', function () {
     return "Contact Us";
 });
 
-Route::get('/post/{id}/{name}', function ($id, $name) {
-    return "This is post number " . $id . " " . $name;
-});
+Route::get('/admin/post/example', array('as' => 'admin.example', function () {
+    $url = route('admin.example');
+    return "This url: " . $url;
+}));
