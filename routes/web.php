@@ -29,3 +29,5 @@ Route::get('/admin/post/example', array('as' => 'admin.example', function () {
     $url = route('admin.example');
     return "This url: " . $url;
 }));
+
+Route::get('post', 'PostsController@index');
