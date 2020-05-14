@@ -30,4 +30,4 @@ Route::get('/admin/post/example', array('as' => 'admin.example', function () {
     return "This url: " . $url;
 }));
 
-Route::get('post', 'PostsController@index');
+Route::get('/post/{id}', 'PostsController@index');
