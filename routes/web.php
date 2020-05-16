@@ -30,10 +30,6 @@ Route::get('/admin/post/example', array('as' => 'admin.example', function () {
     return "This url: " . $url;
 }));
 
-Route::get('/insert', function(){
-    DB::insert('insert into posts(title, body) values(?, ?)', ['PHP with Laravel', 'PHP is good with Laravel']);
-});
-
 //Route::get('/post/{id}', 'PostsController@index');
 
 Route::resource('posts', 'PostsController');
@@ -41,3 +37,21 @@ Route::resource('posts', 'PostsController');
 Route::get('/contact', 'PostsController@contact');
 
 Route::get('post/{id}/{name}', 'PostsController@showPost');
+
+/*
+|--------------------------------------------------------------------------------------------------------------
+| DATABASE RAW SQL QUERIES
+|--------------------------------------------------------------------------------------------------------------
+*/
+
+Route::get('/insert', function () {
+    DB::insert('insert into posts(title, body) values(?, ?)', ['PHP with Laravel', 'PHP is good with Laravel']);
+});
+
+Route::get('/read', function () {
+    $results = DB::select('select * from posts where id = ?', ['1']);
+
+    foreach ($results as $post) {
+        return $post->title;
+    }
+});
