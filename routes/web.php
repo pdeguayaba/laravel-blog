@@ -30,6 +30,10 @@ Route::get('/admin/post/example', array('as' => 'admin.example', function () {
     return "This url: " . $url;
 }));
 
+Route::get('/insert', function(){
+    DB::insert('insert into posts(title, body) values(?, ?)', ['PHP with Laravel', 'PHP is good with Laravel']);
+});
+
 //Route::get('/post/{id}', 'PostsController@index');
 
 Route::resource('posts', 'PostsController');
