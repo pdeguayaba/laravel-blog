@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,4 +65,18 @@ Route::get('/update', function () {
 Route::get('/delete', function () {
     $deleted = DB::delete('delete from posts where id = ?', [1]);
     return $deleted;
+});
+
+
+/*
+|--------------------------------------------------------------------------------------------------------------
+| ELOQUENT
+| ORM - OBJECT RELATIONAL MODEL
+|--------------------------------------------------------------------------------------------------------------
+*/
+
+Route::get('/find', function () {
+    $post = Post::find(2);
+
+    return $post->title;
 });
