@@ -86,3 +86,9 @@ Route::get('/findwhere', function () {
 
     return $posts;
 });
+
+Route::get('/findmore', function () {
+    $posts = Post::findOrFail(1);
+
+    return $posts;
+});
