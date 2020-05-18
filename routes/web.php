@@ -92,3 +92,21 @@ Route::get('/findmore', function () {
 
     return $posts;
 });
+
+Route::get('/easyinsert', function () {
+    $post = new Post;
+
+    $post->title = 'New Eloquent Title Insert';
+    $post->body = 'New Eloquent Content Insert';
+
+    $post->save();
+});
+
+Route::get('/easyinsert2', function () {
+    $post = Post::find(4);
+
+    $post->title = 'Title eloquent update';
+    $post->body = 'Content eloquent update';
+
+    $post->save();
+});
