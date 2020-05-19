@@ -110,3 +110,7 @@ Route::get('/easyinsert2', function () {
 
     $post->save();
 });
+
+Route::get('/create', function () {
+    Post::create(['title'=>'This the title, done by the create method', 'body'=>'This is the body, done by the create method']);
+});
