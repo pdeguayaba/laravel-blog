@@ -45,7 +45,7 @@ Route::get('post/{id}/{name}', 'PostsController@showPost');
 |--------------------------------------------------------------------------------------------------------------
 */
 
-Route::get('/insert', function () {
+Route::get('/insertsql', function () {
     DB::insert('insert into posts(title, body) values(?, ?)', ['PHP with Laravel', 'PHP is good with Laravel']);
 });
 
@@ -57,12 +57,12 @@ Route::get('/read', function () {
     }
 });
 
-Route::get('/update', function () {
+Route::get('/updatesql', function () {
     $updated = DB::update('update posts set title = "Updated title" where id = ?', [1]);
     return $updated;
 });
 
-Route::get('/delete', function () {
+Route::get('/deletesql', function () {
     $deleted = DB::delete('delete from posts where id = ?', [1]);
     return $deleted;
 });
@@ -113,4 +113,8 @@ Route::get('/easyinsert2', function () {
 
 Route::get('/create', function () {
     Post::create(['title'=>'This the title, done by the create method', 'body'=>'This is the body, done by the create method']);
+});
+
+Route::get('/update', function () {
+    Post::where('id', 2)->where('is_admin', 0)->update(['title'=>'Updated PHP title', 'body'=>'Updated body']);
 });
