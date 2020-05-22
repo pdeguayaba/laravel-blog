@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Post;
+use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -143,4 +144,21 @@ Route::get('/readsoftdelete', function () {
 
 Route::get('/restore', function () {
     Post::withTrashed()->where('is_admin', 0)->restore();
+});
+
+Route::get('forcedelete', function () {
+    Post::onlyTrashed()->where('is_admin', 0)->forceDelete();
+});
+
+
+/*
+|--------------------------------------------------------------------------------------------------------------
+| ELOQUENT
+| RELATIONSHIPS
+|--------------------------------------------------------------------------------------------------------------
+*/
+
+// ONE TO ONE RELATIONSHIP
+Route::get('/user/{id}/post', function ($id) {
+    return User::find($id)->post;
 });
