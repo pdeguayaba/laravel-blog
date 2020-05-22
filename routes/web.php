@@ -130,3 +130,7 @@ Route::get('/delete', function () {
 Route::get('/delete2', function () {
     Post::destroy([7, 8]);
 });
+
+Route::get('/softdelete', function () {
+    Post::find(10)->delete();
+});
