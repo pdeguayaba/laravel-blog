@@ -113,11 +113,11 @@ Route::get('/easyinsert2', function () {
 });
 
 Route::get('/create', function () {
-    Post::create(['title'=>'This the title, done by the create method', 'body'=>'This is the body, done by the create method']);
+    Post::create(['title' => 'This the title, done by the create method', 'body' => 'This is the body, done by the create method']);
 });
 
 Route::get('/update', function () {
-    Post::where('id', 2)->where('is_admin', 0)->update(['title'=>'Updated PHP title', 'body'=>'Updated body']);
+    Post::where('id', 2)->where('is_admin', 0)->update(['title' => 'Updated PHP title', 'body' => 'Updated body']);
 });
 
 // Delete with delete() method
@@ -161,4 +161,9 @@ Route::get('forcedelete', function () {
 // ONE TO ONE RELATIONSHIP
 Route::get('/user/{id}/post', function ($id) {
     return User::find($id)->post;
+});
+
+// *** Having an error over here, needs fix. ***
+Route::get('/post/{id}/user', function ($id) {
+    return Post::find($id)->user->name;
 });
