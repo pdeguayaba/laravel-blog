@@ -132,5 +132,11 @@ Route::get('/delete2', function () {
 });
 
 Route::get('/softdelete', function () {
-    Post::find(10)->delete();
+    Post::find(11)->delete();
+});
+
+Route::get('/readsoftdelete', function () {
+    $post = Post::onlyTrashed()->where('is_admin', '0')->get();
+
+    return $post;
 });
