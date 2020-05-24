@@ -34,7 +34,7 @@ Route::get('/admin/post/example', array('as' => 'admin.example', function () {
 
 //Route::get('/post/{id}', 'PostsController@index');
 
-Route::resource('posts', 'PostsController');
+//Route::resource('posts', 'PostsController');
 
 Route::get('/contact', 'PostsController@contact');
 
@@ -166,4 +166,13 @@ Route::get('/user/{id}/post', function ($id) {
 // *** Having an error over here, needs fix. ***
 Route::get('/post/{id}/user', function ($id) {
     return Post::find($id)->user->name;
+});
+
+// ONE TO MANY RELATIONSHIP
+Route::get('/posts', function () {
+    $user = User::find(1);
+
+    foreach ($user->posts as $post) {
+        echo $post->title . "<br>";
+    }
 });
